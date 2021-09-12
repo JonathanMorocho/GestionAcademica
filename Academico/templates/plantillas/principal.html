@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'tinymce/css/prism.css' %} ">
+    
+    <!-- Compiled and minified CSS -->
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <title> Cursos</title>
+
+ <nav>
+    <div class="nav-wrapper cyan lighten-3">
+      <a href="/" class="brand-logo">ISTL</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Inicio</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="/crear_PeriodoAcademico">Nuevo Periodo Academico</a></li>
+        <li><a href="/lista_form">Periodos</a></li>
+        <li><a href="/">Estudiantes</a></li>
+        <li><a href="/"></a>{{user.username}}</li>
+        <li><a href="/logout">salir</a></li>
+        {% else %}
+        <li><a href="/registro/">Registro</a></li>
+        <li><a href="/login">Entrada</a></li>
+
+
+        {% endif %}
+      </ul>
+    </div>
+</nav>
+
+</head>
+<body>
+
+
+<div class="container">
+  <br><br>
+  {% block content %} {% endblock %}
+</div>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+
+    
+  <script src="{% static 'tinymce/js/prism.js' %}"></script>
+</body>
+</html>

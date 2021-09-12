@@ -1,0 +1,33 @@
+{% extends "plantillas/principal.html" %} {% block content %}
+
+
+{% for aca in Academico %}
+
+<center>
+      <div class="row">
+      <div class="col s12 m6">
+        <div class="card teal darken-3">
+          <div class="card-content white-text ">
+          <div>
+          <p><img src={{cur.image.url}} width="130" height="100"
+            style="border: 2px outset; color: orange;" /></p>
+          </div
+              
+          <span class="card-title">{{aca.Periodo_Academico}}</span>
+            <p>{{aca.Fecha_inicio_Periodo}}</p>
+            <p>{{aca.Duracion_Ciclo}}</p>
+            {% comment %} <p>{{cur.curso_costo|safe}}</p>  {% endcomment %}
+          </div>
+          <div class="card-action">
+            <a href="{% url 'inscripciones:inscripcionesform' cur.pk %}">Inscribirse</a>
+            <a href="{% url 'main:inscritos_curso' cur.pk %}">Lista de inscritos</a>
+            
+
+          </div>
+        </div>
+      </div>
+    {%  endfor  %}
+  </div>
+  </center>
+
+{% endblock %}
