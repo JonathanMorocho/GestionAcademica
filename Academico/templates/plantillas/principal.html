@@ -14,25 +14,23 @@
     rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
-    <title> Cursos</title>
+    <title> Gestion Academica </title>
 
  <nav>
     <div class="nav-wrapper cyan lighten-3">
       <a href="/" class="brand-logo">ISTL</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if user.is_authenticated %}
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/crear_PeriodoAcademico">Nuevo Periodo Academico</a></li>
-        <li><a href="/lista_form">Periodos</a></li>
-        <li><a href="/">Estudiantes</a></li>
-        <li><a href="/"></a>{{user.username}}</li>
-        <li><a href="/logout">salir</a></li>
-        {% else %}
-        <li><a href="/paginaDos">Inicio</a></li>
-        <li><a href="/registro/">Registro</a></li>
-        <li><a href="/login">Entrada</a></li>
-
-
+          <li><a href="/paginaPrincipal/">Inicio</a></li>
+          <li><a href="/crear_PeriodoAcademico">Nuevo Periodo Academico</a></li>
+          <li><a href="/lista_form">Periodos</a></li>
+          <li><a href="/lista_form">Estudiantes</a></li>
+          <li><a href="/"></a>{{user.username}}</li>
+          <li><a href="/logout">salir</a></li>
+          {% else %}
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/registro/">Registro</a></li>
+          <li><a href="/login">Entrada</a></li>
         {% endif %}
       </ul>
     </div>

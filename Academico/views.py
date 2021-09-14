@@ -9,10 +9,10 @@ from django.contrib import messages
 # Create your views here.
 #Pagina Inicial
 def homepage(request):
-    return render(request, "plantillas/inicio.html", {"instituto": Carrera.objects.all})
+    return render(request, "plantillas/inicio.html")
 
-def paginaDos(request):
-    return render(request, "plantillas/inicio2.html")
+def paginaPrincipal(request):
+    return render(request, "plantillas/paginaPrincipal.html")
 
 #Registrar un Adminsitrativo
 def registro(request):
@@ -46,7 +46,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"Estas logeado como {usuario}")
-                return redirect("Academico:homepage")
+                return redirect("Academico:paginaPrincipal")
             else:
                 messages.info(request, f"Usuario o contraseña incorrecta")
         else:
@@ -58,7 +58,7 @@ def login_request(request):
 #Cerrar Seccion
 def logout_request(request):
     logout(request)
-    return redirect("Academico:paginaDos")
+    return redirect("Academico:paginaPrincipal")
 
 #Nuevo Periodo Academico
 def crear_PeriodoAcademico(request):
@@ -79,10 +79,16 @@ def crear_PeriodoAcademico(request):
     return render(request, "plantillas/registro_periodo.html", context)
 
 #Lista de Periodos Academcios
-def lista_form(request):
+def lista_form(request):    
     academico = Carrera.objects.all()
     context = {
         'Academico': academico
     }
     print(academico)
     return render(request, "plantillas/listas.html", context)
+
+#Eliminar Periodo
+# def eliminarCurso(request,id):
+#     academico = Carrera.objects.get(codigo = id)
+#     academico.delete()
+#     return redirect('Academico:lista_form')
