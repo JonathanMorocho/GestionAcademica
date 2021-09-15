@@ -8,7 +8,7 @@ class Carrera(models.Model):
     Duracion_Ciclo = models.CharField(max_length=25)
     
     def __str__(self):
-        return self.codigo
+        return self.Periodo_Academico
 
 class Estudiante(models.Model):
     dni = models.CharField(max_length=10, primary_key=True)
@@ -26,3 +26,6 @@ class Estudiante(models.Model):
     def nombreCompleto(self):
         txt = "{0} {1}, {2}"
         return txt.format(self.Nombres, self.Apellidos)
+        
+    def _str_(self):
+        return '%s %s' % (self.dni, self.Nombres, self.Apellidos, self.Fecha_Nacimiento, self.Edad, self.sexo, self.PeriodoAcademico)

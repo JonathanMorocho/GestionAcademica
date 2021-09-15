@@ -12,4 +12,7 @@ urlpatterns = [
     path('crear_PeriodoAcademico/', views.crear_PeriodoAcademico, name='crear_PeriodoAcademico'),
     path('lista_form/', views.lista_form, name='lista_form'),
     # path('eliminarCurso/<int:id>/', views.eliminarCurso, name= 'eliminarCurso'),
+    path('matriculasEstudiantes/', views.matriculasEstudiantes, name='matriculasEstudiantes'),
+    path('eliminarCurso/<int:id>/', views.eliminarCurso, name= 'eliminarCurso'),
+    path('lista_matriculasEstudiantes/', views.lista_matriculasEstudiantes, name='lista_matriculasEstudiantes'),
 ]

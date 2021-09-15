@@ -6,3 +6,9 @@ class RegistroForm(forms.ModelForm):
         
         model = Carrera 
         fields = '__all__'
+    
+class MatriculasForm(forms.ModelForm):
+    class Meta:
+        
+        model = Estudiante 
+        fields = '__all__'
