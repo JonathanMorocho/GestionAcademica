@@ -1,11 +1,13 @@
 {% extends "plantillas/principal.html" %} {% block content %}
+<div class="container">
+<center><h3>Iniciar Sesión</h3></center>
+        <br><br>
+    <form action="" method="POST">
+        {% csrf_token %} {{form.as_p}}
+        <button class="btn" type="sumit">Entrar</button>
 
-<form action="" method="POST">
-    {% csrf_token %} {{form.as_p}}
-    <button class="btn" type="sumit">Entrar</button>
+    </form>
 
-</form>
-
-Si aún no tienes una cuenta, ve a <a href="/registro">Registro</a>
-
+    Si aún no tienes una cuenta, ve a <a href="/registro">Registro</a>
+</div>
 {% endblock %}

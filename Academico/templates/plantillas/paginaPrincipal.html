@@ -1,10 +1,11 @@
 {% extends "plantillas/principal.html" %} 
 
 {% block content %}    
+        <br><br>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-
+<center>
     <div class="container">
         <div class="row">
 
@@ -19,8 +20,8 @@
                         <p>{{aca.Fecha_inicio_Periodo|date:"l d F Y"}}</p>
                     </div>
                     <div class="card-action">
-                    <a href="{% url 'Academico:matriculasEstudiantes' %}">Inscripciones</a>
-                    <a href="{% url 'Academico:lista_matriculasEstudiantes' %}">Inscritos</a>
+                    <a href="{% url 'Academico:matriculasEstudiantes' %}">Matricular</a>
+                    <a href="{% url 'Academico:lista_matriculasEstudiantes' %}">Lista de Matriculados</a>
                     </div>
                 </div>        
             </div>
@@ -28,4 +29,7 @@
             {% endfor %}
         </div>
     </div>
+</center>
 {% endblock %}
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

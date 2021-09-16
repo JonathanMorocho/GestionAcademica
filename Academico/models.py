@@ -16,11 +16,13 @@ class Estudiante(models.Model):
     Apellidos = models.CharField(max_length=25)
     Fecha_Nacimiento = models.DateField()
     Edad = models.IntegerField()
-    sexos = [
-        ('H', 'Masculino'),
-        ('F', 'Femenino')
-    ]
-    sexo = models.CharField(max_length=1, choices=sexos, default='H')
+    # sexos = [
+    #     ('H', 'Masculino'),
+    #     ('F', 'Femenino')
+    # ]
+    sexoM = models.BooleanField("Masculino", default=False)
+    sexoF = models.BooleanField("Femenino", default=False)
+    # sexoM = models.CharField(max_length=1, choices=sexos, default='H')
     PeriodoAcademico = models.ForeignKey(Carrera, null=False, blank=False, on_delete=models.CASCADE)
 
     def nombreCompleto(self):
