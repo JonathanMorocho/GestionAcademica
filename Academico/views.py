@@ -1,21 +1,23 @@
 from django.shortcuts import render
-from Academico.forms import RegistroForm, MatriculasForm
+from Academico.forms import RegistroForm, MatriculasForm, InscripcionForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from .models import Carrera, Estudiante
+from sys import prefix
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm 
 from django.contrib import messages
 
 # Create your views here.
-#Pagina Inicial
+#Pagina de Inico ISTL
 def homepage(request):
     return render(request, "plantillas/inicio.html")
 
+#Pagina Principal Logeado
 def paginaPrincipal(request):
     return render(request, "plantillas/paginaPrincipal.html", {"Academico": Carrera.objects.all})
 
 #Registrar un Adminsitrativo
-def registro(request):
+def registro_Admin(request):
 
     if request.method =="POST":
         form = UserCreationForm(request.POST)
@@ -33,7 +35,7 @@ def registro(request):
     form = UserCreationForm 
     return render(request, "plantillas/registro_user.html", {"form":form})
 
-#Ingresar
+#Ingresar Login
 def login_request(request):
 
     if request.method == "POST":
@@ -87,17 +89,11 @@ def lista_form(request):
     print(academico)
     return render(request, "plantillas/listas.html", context)
 
-#Eliminar Periodo
-# def eliminarCurso(request,id):
-#     academico = Carrera.objects.get(codigo = id)
-#     academico.delete()
-#     return redirect('Academico:lista_form')
-
-#Registro de Estudiantes
+# Matriculas De Estudiantes
 def matriculasEstudiantes(request):
-    form = MatriculasForm() 
+    form = InscripcionForm() 
     if request.method == 'POST':
-        form = MatriculasForm(request.POST)
+        form = InscripcionForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('Academico:paginaPrincipal')
@@ -111,28 +107,67 @@ def matriculasEstudiantes(request):
     }
     return render(request, "plantillas/registroEstudiantes.html", context)
 
-def lista_matriculasEstudiantes(request):    
-    estudiante = Estudiante.objects.all()
-    context = {
-        'Estudiante': estudiante
-    }
-    print(estudiante)
-    return render(request, "plantillas/lista_matriculasEstudiantes.html", context)
-
-def eliminarCurso(request,id):
+#Eliminar Periodos Academicos
+def eliminarPeriodosAcademicos(request,id):
     curso = Carrera.objects.get(id = id)
     curso.delete()
     return redirect('Academico:lista_form')
 
+#Editar Periodos Academicos
+def editarPeriodoAcademico(request,id):
+    curso = Carrera.objects.get(id = id)
+    print(curso)
+    form = RegistroForm(instance = curso)
+    if request.method == 'POST':
+        form = RegistroForm(request.POST, instance= curso)
+        if form.is_valid():
+            form.save()
+            messages.info(request, f"Curso editado correctamente")
+            return redirect('Academico:lista_form')
+    contexto = {
+            'form': form
+        }
+    return render(request, "plantillas/Editar_registro_periodo.html", contexto)
 
-# def lista_matriculasEstudiantes(request, id):
-#     academico = Carrera.objects.get(id=id)
-#     estudiante = Estudiante.objects.filter(PeriodoAcademico = academico)
-#     contexto = {
-#         'academico': academico,
-#         'estudiante': estudiante,
+#Lista de Periodos Academcios
+def lista_matriculasEstudiantes(request):    
+    academico = Estudiante.objects.all()
+    context = {
+        'Academico': academico
+    }
+    print(academico)
+    return render(request, "plantillas/lista_matriculasEstudiantes.html", context)
 
-#     }
-#     print("aki"+academico)
-#     print(estudiante)
-#     return render(request, 'plantillas/lista_matriculasEstudiante.html', contexto)
+
+#LA DE LAS CARDS
+def inscritosCurso(request, id):
+    academico = Carrera.objects.get(id=id)
+    EstudiantesIns = Estudiante.objects.filter(PeriodoAcademico = academico)
+    contexto = {
+        'Periodo': academico,
+        'Academico': EstudiantesIns, 
+    }
+    print(academico, EstudiantesIns)
+    return render(request, 'plantillas/lista_matriculasEstudiantes.html', contexto)
+
+#eliminar estudiantes
+def eliminar_matricula(request,id):
+    inscripcion = Estudiante.objects.get(id = id)
+    inscripcion.delete()
+    return redirect('Academico:lista_matriculasEstudiantes')
+
+#Editar_matricula
+def editar_matricula(request,id):
+    curso = Estudiante.objects.get(id = id)
+    print(curso)
+    form = InscripcionForm(instance = curso)
+    if request.method == 'POST':
+        form = MatriculasForm(request.POST, instance= curso)
+        if form.is_valid():
+            form.save()
+            messages.info(request, f"Estudiante editado correctamente")
+            return redirect('Academico:lista_matriculasEstudiantes')
+    contexto = {
+            'form': form
+        }
+    return render(request, "plantillas/Editar_matricula_estudiante.html", contexto)

@@ -5,7 +5,9 @@
 <center><h3>Registro Administradores</h3></center>
         <br>
     <form action="" method="POST">
-        {% csrf_token %} {{form.as_p}}
+        {% csrf_token %}
+        {% load materializecss %} 
+        {{form|materializecss}}
         <button class="btn" type="sumit">Registrar</button>
     </form>
 

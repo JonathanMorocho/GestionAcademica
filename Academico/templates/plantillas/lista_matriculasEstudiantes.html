@@ -36,7 +36,7 @@
 
 {{block.super}}
         <br>
-<center><h1>Lista de Estudiantes</h1></center>
+<center><h1>Lista de Estudiantes {{ Periodo }}</h1></center>
 
 <table class="table table-bordered">
     <thead>
@@ -45,21 +45,21 @@
             <th>Estudiante</th>    
             <th>Edad</th> 
             <th>Sexo</th>     
-            <th>Edad</th> 
             <th>Periodo Academico</th>   
+            <th>Opciones</th> 
         </tr>
     </thead>
 
     <tbody>
         {% for aca in Academico %}
         <tr class="text-center">    
-            <td>{{aca.dni}}</td>    
-            <td class="text-center">{{aca.Nombres}}</td>    
+            <td class="text-center">{{aca.dni}}</td>    
+            <td class="text-center">{{aca.Nombres}} {{aca.Apellidos}}</td>    
             <td class="text-center">{{aca.Edad}}</td>
-            <td class="text-center">{{aca.sexo}}</td>    
+            <td class="text-center">{{aca.sexoM}}</td>    
             <td class="text-center">{{aca.PeriodoAcademico}}</td>
-            <td class="text-center"><a href="" class="btn btn-info btn-sm">Editar</a> |
-            <a href="" class="btn btn-danger">Eliminar</a></td> 
+            <td class="text-center"><a href="{% url 'Academico:editar_matricula' aca.id %}" class="btn btn-info btn-sm">Editar</a> |
+            <a href="{% url 'Academico:eliminar_matricula' aca.id %}" class="btn btn-danger">Eliminar</a></td> 
         </tr>
         {% endfor %}
 

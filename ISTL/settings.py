@@ -17,12 +17,11 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^g_d*)!*ds8!!cuqf-m8)2wkwr0*-#y8oh758ugw!6l+_!v&u6'
+SECRET_KEY = 'django-insecure-s1)m+9yy@mpy@@yv5b&&t9@bc$+i*d4%tf!le8ma+l)+wqo$&^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Academico.apps.AcademicoConfig'
+    'Academico.apps.AcademicoConfig',
+    'materializecssform',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'ISTL.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'plantillas')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,7 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [STATIC_DIR,]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

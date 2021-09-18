@@ -3,7 +3,9 @@
 <center><h3>Iniciar Sesión</h3></center>
         <br><br>
     <form action="" method="POST">
-        {% csrf_token %} {{form.as_p}}
+        {% csrf_token %}
+        {% load materializecss %} 
+        {{form|materializecss}}
         <button class="btn" type="sumit">Entrar</button>
 
     </form>

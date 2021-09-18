@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
-    
-    {% load static %}
-    
-    <link rel="stylesheet" href="{% static '/tinymce/css/prism.css' %} ">
-    
-    <!-- Compiled and minified CSS -->
-    {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> {% endcomment %}
-<!-- CSS only -->
-{% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> {% endcomment %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
-    
-    <title> Gestion Academica </title>
+  {% block css %}
+  {% load static %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css"
+    integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
+  {% endblock css %}
 
- <nav>
+  <title> Gestion Academica </title>
+
+  <nav>
     <div class="nav-wrapper cyan lighten-3">
       <a href="/paginaPrincipal/" class="brand-logo">ISTL</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if user.is_authenticated %}
-          <li><a href="/paginaPrincipal/">Inicio</a></li>
-          <li><a href="/crear_PeriodoAcademico">Nuevo Periodo Academico</a></li>
-          <li><a href="/lista_form">Periodos</a></li>
-          <li><a href="/lista_matriculasEstudiantes">Estudiantes</a></li>
-          <li><a href="/"></a>{{user.username}}</li>
-          <li><a href="/logout">salir</a></li>
-          {% else %}
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/registro/">Registro</a></li>
-          <li><a href="/login">Entrada</a></li>
+        <li><a href="/paginaPrincipal/">Inicio</a></li>
+        <li><a href="/crear_PeriodoAcademico">Nuevo Periodo Academico</a></li>
+        <li><a href="/lista_form">Periodos</a></li>
+        <li><a href="/lista_matriculasEstudiantes">Estudiantes</a></li>
+        <li><a href="/"></a>{{user.username}}</li>
+        <li><a href="/logout">salir</a></li>
+        {% else %}
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/registro_Admin">Registro</a></li>
+        <li><a href="/login">Entrada</a></li>
         {% endif %}
       </ul>
     </div>
-</nav>
+  </nav>
 
 </head>
+
 <body>
 
   {% block content %} {% endblock %}
 
-
-
-  <!-- Compiled and minified JavaScript -->
-    
-
-    <!-- JavaScript Bundle with Popper -->
-{% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script> {% endcomment %}
-</body>
+  {% block javascript %}
+  {% load static %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js"
+    integrity="sha256-SrBfGi+Zp2LhAvy9M1bWOCXztRU9Ztztxmu5BcYPcPE=" crossorigin="anonymous"></script>
 
-  <script src="{% static '/tinymce/js/prism.js' %}"></script>
+  <script>
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+  </script>
+  {% endblock javascript %}
+</body>
+
 
 </html>

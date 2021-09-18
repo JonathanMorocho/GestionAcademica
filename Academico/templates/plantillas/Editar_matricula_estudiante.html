@@ -1,0 +1,23 @@
+{% extends "plantillas/principal.html" %}
+{% block content %}
+<!-- CSS only -->
+<div class="container">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <center>
+    <br>
+    <h2>Registrar un nuevo Curso</h2>
+    <br>
+  </center>
+  <form method="post">
+    {% csrf_token %}
+    {% load materializecss %}
+    {{form|materializecss}}
+
+
+    <center><button class="btn btn-success" type="submit">Editar</button></center>
+
+  </form>
+</div>
+{% endblock content %}
