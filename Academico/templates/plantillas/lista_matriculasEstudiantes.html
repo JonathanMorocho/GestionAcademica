@@ -44,7 +44,8 @@
             <th>Cedula</th>    
             <th>Estudiante</th>    
             <th>Edad</th> 
-            <th>Sexo</th>     
+            <th>Sexo</th> 
+            <th>Fecha de Nacimiento</th>    
             <th>Periodo Academico</th>   
             <th>Opciones</th> 
         </tr>
@@ -56,7 +57,8 @@
             <td class="text-center">{{aca.dni}}</td>    
             <td class="text-center">{{aca.Nombres}} {{aca.Apellidos}}</td>    
             <td class="text-center">{{aca.Edad}}</td>
-            <td class="text-center">{{aca.sexoM}}</td>    
+            <td class="text-center">{{aca.sexoM}}</td>
+            <td class="text-center">{{aca.Fecha_Nacimiento}}</td>    
             <td class="text-center">{{aca.PeriodoAcademico}}</td>
             <td class="text-center"><a href="{% url 'Academico:editar_matricula' aca.id %}" class="btn btn-info btn-sm">Editar</a> |
             <a href="{% url 'Academico:eliminar_matricula' aca.id %}" class="btn btn-danger">Eliminar</a></td> 

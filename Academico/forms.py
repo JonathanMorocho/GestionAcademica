@@ -35,3 +35,20 @@ class InscripcionForm(forms.ModelForm):
             'PeriodoAcademico' : 'Periodo Academico',
         }
         
+class InscripcionEditarForm(forms.ModelForm):
+    class Meta:
+        model = Estudiante
+    
+        fields = [
+                    'dni',
+                    'Nombres',
+                    'Apellidos',
+                    'Edad',
+                    'sexoM',
+                    'PeriodoAcademico',
+                ]
+        labels  = {
+            'dni' : 'Cédula',
+            'sexoM' : 'Genero',
+            'PeriodoAcademico' : 'Periodo Academico',
+        }

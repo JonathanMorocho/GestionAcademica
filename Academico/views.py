@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Academico.forms import RegistroForm, MatriculasForm, InscripcionForm
+from Academico.forms import RegistroForm, MatriculasForm, InscripcionForm, InscripcionEditarForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from .models import Carrera, Estudiante
@@ -160,9 +160,9 @@ def eliminar_matricula(request,id):
 def editar_matricula(request,id):
     curso = Estudiante.objects.get(id = id)
     print(curso)
-    form = InscripcionForm(instance = curso)
+    form = InscripcionEditarForm(instance = curso)
     if request.method == 'POST':
-        form = MatriculasForm(request.POST, instance= curso)
+        form = InscripcionEditarForm(request.POST, instance= curso)
         if form.is_valid():
             form.save()
             messages.info(request, f"Estudiante editado correctamente")
