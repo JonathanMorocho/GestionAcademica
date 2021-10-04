@@ -15,11 +15,11 @@ class MatriculasForm(forms.ModelForm):
         model = Estudiante 
         fields = '__all__'
 
-class MateriasForm(forms.ModelForm):
-    class Meta:
+# class MateriasForm(forms.ModelForm):
+#     class Meta:
         
-        model = Materias
-        fields = '__all__'
+#         model = Materias
+#         fields = '__all__'
 
 
 class InscripcionForm(forms.ModelForm):

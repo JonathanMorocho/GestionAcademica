@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Academico.forms import RegistroForm, MatriculasForm, InscripcionForm, InscripcionEditarForm, MateriasForm
+from Academico.forms import RegistroForm, MatriculasForm, InscripcionForm, InscripcionEditarForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from .models import Carrera, Estudiante
@@ -123,12 +123,12 @@ def lista_form(request):
 #     return render(request, 'plantillas/registroEstudiantes.html', contexto)
 
 def matriculasEstudiantes(request):
-    form = InscripcionForm() 
+    form = MatriculasForm() 
     if request.method == 'POST':
-        form = InscripcionForm(request.POST)
+        form = MatriculasForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('Academico:RegistroMaterias')
+            return redirect('Academico:paginaPrincipal')
         else: 
             context = {
                 'forms': form
@@ -167,7 +167,7 @@ def lista_matriculasEstudiantes(request):
     context = {
         'Academico': academico
     }
-    print(academico)
+    # print(academico)
     return render(request, "plantillas/lista_matriculasEstudiantes.html", context)
 
 
@@ -179,7 +179,7 @@ def inscritosCurso(request, id):
         'Periodo': academico,
         'Academico': EstudiantesIns, 
     }
-    print(academico, EstudiantesIns)
+    # print(academico, EstudiantesIns)
     return render(request, 'plantillas/lista_matriculasEstudiantes.html', contexto)
 
 #eliminar estudiantes
@@ -204,19 +204,19 @@ def editar_matricula(request,id):
         }
     return render(request, "plantillas/Editar_matricula_estudiante.html", contexto)
 
-def RegistroMaterias(request):
-    form = MateriasForm() 
-    if request.method == 'POST':
-        form = MateriasForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('Academico:paginaPrincipal')
-        else: 
-            context = {
-                'forms': form
-            }
-            return redirect(request, "plantillas/registroMaterias.html", context)
-    context = {
-        'forms': form
-    }
-    return render(request, "plantillas/registroMaterias.html", context)
+# def RegistroMaterias(request):
+#     form = MateriasForm() 
+#     if request.method == 'POST':
+#         form = MateriasForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('Academico:paginaPrincipal')
+#         else: 
+#             context = {
+#                 'forms': form
+#             }
+#             return redirect(request, "plantillas/registroMaterias.html", context)
+#     context = {
+#         'forms': form
+#     }
+#     return render(request, "plantillas/registroMaterias.html", context)
