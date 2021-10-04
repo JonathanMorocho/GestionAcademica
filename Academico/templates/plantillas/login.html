@@ -1,15 +1,33 @@
 {% extends "plantillas/principal.html" %} {% block content %}
-<div class="container">
-<center><h3>Iniciar Sesión</h3></center>
-        <br><br>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {% load materializecss %} 
-        {{form|materializecss}}
-        <button class="btn" type="sumit">Entrar</button>
 
-    </form>
+<center>
+    <div class="container"><br><br><br><br>
 
-    Si aún no tienes una cuenta, ve a <a href="/registro">Registro</a>
-</div>
+        <div class="card center" style="width: 40rem; height: 34rem; background-color: #FFFFFF;"><br>
+            <center><img src="/static/imagenes/Logo2.png" width="450"><br></center>
+            <br><br>
+
+            <center>
+                <div class="card " style="width: 35rem; height: 20rem; background-color: #FFFFFF;">
+
+                    <form action="" method="POST">
+                        <div class="container">
+                            {% csrf_token %}
+                            {% load materializecss %}
+                            {{form|materializecss}}
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="sumit" style="margin: 10px;">ACCEDER</button>
+
+                            </div>
+                    </form>
+
+
+                    Si aún no tienes una cuenta, ve a <a href="/registro_Admin">Registro</a>
+                </div>
+
+            </center>
+            <div>
+</center><br><br><br>
+
 {% endblock %}

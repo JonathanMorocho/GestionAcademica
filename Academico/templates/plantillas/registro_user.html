@@ -1,18 +1,51 @@
-{% extends "plantillas/principal.html" %} 
+{% extends "plantillas/principal.html" %}
 {% block content %}
-<div class="container">
-        <br>
-<center><h3>Registro Administradores</h3></center>
-        <br>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {% load materializecss %} 
-        {{form|materializecss}}
-        <button class="btn" type="sumit">Registrar</button>
-    </form>
 
-    Si ya tienes una cuenta, ve a <a href="/login">Entrar</a>
+<center>
+    <div class="container"><br><br><br><br>
 
-{% endblock %}
+        <div class="card center" style="width: 40rem; height: 53rem; background-color: #FFFFFF;"><br>
+
+            <b>
+                <font SIZE="6">REGISTRO DE USUARIOS</font>
+            </b>
+            <center><img
+                    src="https://cdn3.iconfinder.com/data/icons/business-insurance-8/64/business_insurance-10-512.png"
+                    width="150" style="margin: 5px; padding: 3px;">
+
+            </center>
+
+
+
+            <center>
+                <div class="card " style="width: 35rem; height: 34rem; background-color: #FFFFFF;"><br>
+
+
+                    <form action="" method="POST">
+                        <div class="container">
+                            {% csrf_token %}
+                            {% load materializecss %}
+                            {{form|materializecss}}
+
+
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-sm" type="sumit"
+                                    style="margin: 10px;">REGISTRAR</button>
+                            </div>
+
+                    </form>
+
+                    Si ya tienes una cuenta, ve a <a href="/login">Entrar</a>
+                </div>
+
+
+        </div>
+
+</center>
+<div>
+    </center><br><br>
+
+    {% endblock %}
 
 </div>

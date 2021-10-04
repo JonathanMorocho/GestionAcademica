@@ -2,75 +2,91 @@
 {% block titulo %} Lista de Cursos {% endblock titulo%}
 
 
-{% block  js %}
-    <script>
-        function eliminarCurso(id){
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
+{% block js %}
+<script>
+    function eliminarCurso(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
                     'success'
                 )
             }
-            })
-        }
-    </script>
-{% endblock  %}
+        })
+    }
+</script>
+{% endblock %}
 
 
 
 
 {% block content %}
-<div class="container">
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-{{block.super}}
-        <br>
-<center><h1>Lista de Estudiantes {{ Periodo }}</h1></center>
+<center><br><br><br><br>
+    <div class="card center" style="width: 75rem; background-color: #FFFFFF; padding-top: 15px">
 
-<table class="table table-bordered">
-    <thead>
-        <tr class="text-center">    
-            <th>Cedula</th>    
-            <th>Estudiante</th>    
-            <th>Edad</th> 
-            <th>Sexo</th> 
-            <th>Fecha de Nacimiento</th>    
-            <th>Periodo Academico</th>   
-            <th>Opciones</th> 
-        </tr>
-    </thead>
+        <div class="container">
+            <!-- CSS only -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+                crossorigin="anonymous">
 
-    <tbody>
-        {% for aca in Academico %}
-        <tr class="text-center">    
-            <td class="text-center">{{aca.dni}}</td>    
-            <td class="text-center">{{aca.Nombres}} {{aca.Apellidos}}</td>    
-            <td class="text-center">{{aca.Edad}}</td>
-            <td class="text-center">{{aca.sexoM}}</td>
-            <td class="text-center">{{aca.Fecha_Nacimiento}}</td>    
-            <td class="text-center">{{aca.PeriodoAcademico}}</td>
-            <td class="text-center"><a href="{% url 'Academico:editar_matricula' aca.id %}" class="btn btn-info btn-sm">Editar</a> |
-            <a href="{% url 'Academico:eliminar_matricula' aca.id %}" class="btn btn-danger">Eliminar</a></td> 
-        </tr>
-        {% endfor %}
+            {{block.super}}
 
-    </tbody>
+            <center>
+                <div class="card center" style="width: 72rem; background-color: #FFFFFF;"><br>
 
 
-</table>
+                    <h2>LISTA DE ESTUDIANTES {{ Periodo }}</h2>
 
-</div>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Cedula</th>
+                                <th>Estudiante</th>
+                                <th>Edad</th>
+
+                                {% comment %} <th>Fecha de Nacimiento</th> {% endcomment %}
+                                <th>Periodo Academico</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for aca in Academico %}
+                            <tr class="text-center">
+                                <td class="text-center">{{aca.dni}}</td>
+                                <td class="text-center">{{aca.Nombres}} {{aca.Apellidos}}</td>
+                                <td class="text-center">{{aca.Edad}}</td>
+
+                                {% comment %} <td class="text-center">{{aca.Fecha_Nacimiento}}</td> {% endcomment %}
+                                <td class="text-center">{{aca.PeriodoAcademico}}</td>
+                                <td class="text-center"><a href="{% url 'Academico:editar_matricula' aca.id %}"
+                                        class="btn btn-info btn-sm">Editar</a> |
+                                    <a href="{% url 'Academico:eliminar_matricula' aca.id %}"
+                                        class="btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </center>
+        </div>
+</center><br><br><br>
 
 {% endblock content %}
 

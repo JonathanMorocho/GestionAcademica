@@ -3,18 +3,39 @@ Inscripcion de Estudiantes
 
 {% block content %}
 
-<div class="container">
-    <br>
-    <center>
-        <h3>Inscripcion de Estudiantes</h3>
-    </center>
+<center><br><br><br><br>
+    <div class="card center" style="width: 40rem; background-color: #FFFFFF;"><br>
 
-    <form method="POST">
-        {% csrf_token %}
-        {% load materializecss %}
-        {{forms|materializecss}}
-        <center><button type="submit" class="btn waves-effect waves-light">Registrar</button></center>
-    </form>
-</div>
+        <div class="container">
+
+
+            <center>
+                <div class="card center" style="width: 35rem; background-color: #FFFFFF;"><br>
+                    <br>
+                    <center>
+                        <h2>INSCRIPCIÓN DE ESTUDIANTES</h2>
+                    </center>
+
+                    <form method="POST">
+
+                        <div class="container">
+
+                            <div class="container">
+                                {% csrf_token %}
+                                {% load materializecss %}
+                                {{forms|materializecss}}
+
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" type="sumit"
+                                        style="margin: 10px;">GUARDAR Y CONTINUAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </center>
+        </div>
+    </div>
+</center><br><br><br>
 
 {% endblock content %}

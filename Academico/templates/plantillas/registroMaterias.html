@@ -1,0 +1,41 @@
+{% extends "plantillas/principal.html" %}
+Materias
+
+{% block content %}
+
+<center><br><br><br><br>
+    <div class="card center" style="width: 40rem; background-color: #FFFFFF;"><br>
+
+        <div class="container">
+
+
+            <center>
+                <div class="card center" style="width: 35rem; background-color: #FFFFFF;"><br>
+                    <br>
+                    <center>
+                        <h2>MATERIAS</h2>
+                    </center>
+
+                    <form method="POST">
+
+                        <div class="container">
+
+                            <div class="container">
+                                {% csrf_token %}
+                                {% load materializecss %}
+                                {{forms|materializecss}}
+
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" type="sumit"
+                                        style="margin: 10px;">GUARDAR TODO</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </center>
+        </div>
+    </div>
+</center><br><br><br>
+
+{% endblock content %}

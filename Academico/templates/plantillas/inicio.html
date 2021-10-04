@@ -1,5 +1,115 @@
-{% extends "plantillas/principal.html" %} 
+{% extends "plantillas/principal.html" %}
 {% load static %}
+
 {% block content %}
-        <img src="{% static "imagenes/ISTlojaslider.jpg" %}" alt="ISTlojaslider" width="1536" height="687">     
+
+<!--Carrusel de imágenes-->
+
+<br>
+<div class="slider">
+  <ul class="slides">
+
+    <li>
+      <img src="/static/imagenes/ISTlojaslider.jpg">
+      <div class="caption left-align" style="background-color: rgba(45,51,57,0.65);">
+        <h1>Educación de Calidad</h1>
+    </li>
+
+    <li>
+      <img src="/static/imagenes/IMG2.jpg" height="450" width="">
+      <div class="caption right-align" style="background-color: rgba(45,51,57,0.65);">
+        <h1>Somos ISTL </h1>
+      </div>
+    </li>
+
+    <li>
+      <img src="/static/imagenes/Images.jpg">
+      <div class="caption center-align" style="background-color: rgba(45,51,57,0.65);">
+        <h1 class="left-top">Contamos con</h1>
+      </div>
+    </li>
+
+    <li>
+      <img src="/static/imagenes/descarga.jpg">
+      <div class="caption center-align" style="background-color: rgba(45,51,57,0.65);">
+        <h1>La mejor educación</h1>
+    </li>
+
+    <li>
+      <img src="/static/imagenes/IMG.jpg">
+      <div class="caption left-align" style="background-color: rgba(45,51,57,0.75);">
+        <h1>Estudia con nosotros</h1>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+
+
+  const sideNav = document.querySelector('.sidenav');
+  M.Sidenav.init(sideNav, {});
+
+  const elems = document.querySelector('.slider');
+  M.Slider.init(elems, {
+    indicators: true,
+    height: 450,
+    padding: 5,
+    transition: 500,
+    interval: 2000
+
+  });
+</script>
+
+<br>
+
+
+<!--Cuerpo-->
+<section>
+  <center>
+    <div class="card" style="width: 70rem; height: 44rem; background-color: #e1e5f2;  margin: 50px;
+  padding: 3px;
+  border: black 1px solid;">
+
+      <div class="card-header blue-text center" style="background-color: rgba(45,51,57,0.0);"><br>
+        <b>
+          <font SIZE="7"> CARRERA EN DESARROLLO DE SOFTWARE</font>
+        </b>
+      </div>
+      <div class="card-body center">
+        <img
+          src="https://scontent.floh1-1.fna.fbcdn.net/v/t1.6435-9/67766364_843977529331903_2815045084762865664_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=e3f864&_nc_ohc=OfktkQpFMNoAX8_Ifhc&tn=mmNtfm0hqTzkKBJA&_nc_ht=scontent.floh1-1.fna&oh=d7502506cafb0e4cd58e9df4fe624c11&oe=617C9249"
+          alt="principal" height="250">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9jxvp41_56DZ3t9oai6yBNJBTLCqTO0xr1w&usqp=CAU"
+          alt="principal" height="250">
+      </div>
+
+
+      <div class="container" <div class="card-body left">
+        <div class="card-header left" style="background-color: #f1faee;">
+
+          <h3> | DESCRIPCIÓN DE LA CARRERA</h3>
+
+          <p class="card-text left">
+            Integrar profesionales líderes en desarrollo de software, con responsabilidad social -empresarial y
+            conocimientos teóricos – prácticos, para el desarrollo de sistemas de información y de la implantación
+            de aplicaciones grandes satisfaciendo las necesidades informáticas de cualquiera empresa.</p>
+
+          <center><a href="http://127.0.0.1:8000/registro_Admin/" class="btn btn-primary">Ir al sitio</a></center><br>
+
+        </div>
+      </div>
+    </div><br><br><br>
+    </div>
+  </center>
+
+</section>
+
+
+
 {% endblock %}
