@@ -53,6 +53,11 @@ class InscripcionEditarForm(forms.ModelForm):
                     'Edad',
                     'sexoM',
                     'PeriodoAcademico',
+                    'PrimerCiclo',
+                    'SegundoCiclo',
+                    'TercerCiclo',
+                    'CuartoCiclo',
+                    'QuintoCiclo',
                 ]
         labels  = {
             'dni' : 'Cédula',
